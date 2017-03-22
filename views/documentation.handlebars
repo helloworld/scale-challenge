@@ -1,0 +1,80 @@
+<div class="ui container">
+    <h3><u>Documentation:</u></h3>
+    <div class="ui segment">
+        Endpoint: <b><code>/api/task/annotation</code></b> 
+        <br><br>
+        Click <a href="https://www.hurl.it/">here</a> for an example request demo
+        <br>
+        <br>
+        <br> Parameters:
+        <table class="ui table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b><code>SCALE_API_KEY</code></b></td>
+                    <td>string</td>
+                    <td>Scale uses API keys to allow access to the API. You can find your API keys on your dashboard, which you can access by <a href="/login">logging in</a> or <a href="/login">signing up</a>.</td>
+                </tr>
+                <tr>
+                    <td><b><code>attachment</code></b></td>
+                    <td>string</td>
+                    <td>A URL to the image you’d like to be annotated with bounding boxes.</td>
+                </tr>
+                <tr>
+                    <td><b><code>attachment_type</code></b></td>
+                    <td>string</td>
+                    <td>Describes what type of file the attachment is. We currently only support image for the annotation endpoint.</td>
+                </tr>
+                <tr>
+                    <td><b><code>objects_to_annotate</code></b></td>
+                    <td>[string]</td>
+                    <td>An array of strings describing which objects you’d like bounding boxes to be drawn around. Each string should be singular and self-descriptive (ex: “cat”, “street sign”, “potato”). You may include at most 6 objects.</td>
+                </tr>
+                <tr>
+                    <td><b><code>with_labels</code></b></td>
+                    <td>boolean</td>
+                    <td>Specifies whether you’d like labels for each bounding box in the response. Each label will be a member of the objects_to_annotate array.</td>
+                </tr>
+                <tr>
+                    <td><b><code>callback_url</code></b></td>
+                    <td>string</td>
+                    <td>The full url (including the scheme http:// or https://) of the callback when the task is completed..</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br> Example Request: {{#if user.api_token}}
+        <code>
+        <pre>
+        {
+            "SCALE_API_KEY": "{{user.api_token}}", // This is your token
+            "attachment": "http://i.imgur.com/v4cBreD.jpg",
+            "attachment_type": "image",
+            "objects_to_annotate": ["big cow", "baby cow"], 
+            "with_labels": true, 
+            "callback_url": "http://requestb.in/1c0cvs51"
+        }
+        </pre>
+        </code> {{else}}
+        <code>
+        <pre>
+        {
+            "SCALE_API_KEY": "...",
+            "attachment": "http://i.imgur.com/v4cBreD.jpg",
+            "attachment_type": "image",
+            "objects_to_annotate": ["big cow", "baby cow"], 
+            "with_labels": true, 
+            "callback_url": "http://requestb.in/1c0cvs51"
+        }
+        </pre>
+        </code> {{/if}}
+        <br>
+        <br>
+    </div>
+</div>

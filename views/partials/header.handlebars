@@ -1,0 +1,34 @@
+<div class="top padding"></div>
+<div class="ui borderless main menu">
+    <div class="ui text container">
+        <a href="/" class="header item">
+            <img class="logo" src="/img/logo.jpg"> Scale API
+        </a>
+        {{#if user}} 
+            {{#if user.admin}}
+                <a href="/backpanel" class="item">Incomplete</a>
+                <a href="/backpanel/completed" class="item">Complete</a> 
+            {{else}}
+                <a href="/documentation" class="item">Documentation</a>
+            {{/if}}
+            <div class="ui right floated dropdown item">
+                {{user.name}}'s Account<i class="dropdown icon"></i>
+                <div class="menu">
+                    <a href="/account" class="item">Account Settings</a>
+                    <a href="/logout" class="item">Logout</a>
+                </div>
+            </div> 
+        {{else}}
+            <a href="/documentation" class="item">Documentation</a>
+            <div class="ui right floated dropdown item">
+                Login/Signup <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a href="/login" class="item">Login (User)</a>
+                    <a href="/signup" class="item">Signup (User)</a>
+                    <div class="divider"></div>
+                    <a href="/login" class="item">Login (Scaler)</a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>

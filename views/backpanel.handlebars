@@ -1,0 +1,40 @@
+<div class="ui text container">
+    <h2 class="ui header">
+        {{#if completed}} Completed 
+        {{else}} Incomplete
+        {{/if}} Tasks: 
+    </h2> {{#if tasks}}
+    <div class="ui two cards">
+        {{#each tasks}}
+        <div class="card">
+            <div class="image">
+                <img src="{{attachment}}">
+            </div>
+            <div class="content">
+                <div class="header">{{id}}</div>
+                <div class="meta">
+                    <a>Created: 20s ago</a>
+                </div>
+                <div class="description">
+                    Tags: {{#each objects_to_annotate}}
+                    <div class="ui tiny label">{{this}}</div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="extra content">
+                {{#if completed}}
+                <div class="ui fluid buttons">
+                    <a href="/backpanel/annotate/{{_id}}" class="ui disabled basic button">Completed</a>
+                </div>
+                {{else}}
+                <div class="ui fluid buttons">
+                    <a href="/backpanel/annotate/{{_id}}" class="ui basic green button">Annotate</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <h3>No tasks here!</h3> {{/if}}
+</div>

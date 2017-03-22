@@ -1,0 +1,68 @@
+<div class="ui text container">
+    {{> flash}} {{#if user.api_token}}
+    <div class="ui clearing segment">
+        <b>Your API Token is: </b>
+        <div class="ui huge label"><code>{{user.api_token}}</code></div>
+        <br>
+        <br>
+        <form class="ui form" method="POST" action="/dashboard/newToken">
+            <button class="ui red button" type="submit">Generate New Token</button>
+        </form>
+    </div>
+    {{else}}
+    <p>You currently do not have an API Token! Click the button below to generate a new one to get started:</p>
+    <form class="ui form" method="POST" action="/dashboard/newToken">
+        <button class="ui green button" type="submit">Generate New Token</button>
+    </form>
+    {{/if}}
+    <h3>Pending Requests:</h3> 
+    {{#if tasks}}
+    <div class="ui two cards">
+        {{#each tasks}}
+        <div class="card">
+            <div class="image">
+                <img src="{{attachment}}">
+            </div>
+            <div class="content">
+                <div class="header">{{id}}</div>
+                <div class="meta">
+                    <a>Created: 20s ago</a>
+                </div>
+                <div class="description">
+                    Tags: {{#each objects_to_annotate}}
+                    <div class="ui tiny label">{{this}}</div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>You don't have any Pending Requests. View the <a href="/documentation">Documentation</a> for information on how to create a new one.</p>
+    {{/if}}
+    <h3>Completed Requests:</h3>
+     {{#if complete}}
+    <div class="ui two cards">
+        {{#each complete}}
+        <div class="card">
+            <div class="image">
+                <img src="{{attachment}}">
+            </div>
+            <div class="content">
+                <div class="header">{{id}}</div>
+                <div class="meta">
+                    <a>Created: 20s ago</a>
+                </div>
+                <div class="description">
+                    Tags: {{#each objects_to_annotate}}
+                    <div class="ui tiny label">{{this}}</div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>You don't have any completed tasks yet.
+    {{/if}}
+</div>

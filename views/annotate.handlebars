@@ -1,0 +1,20 @@
+<div class="ui text container">
+    <h2 class="ui header">Annotation of {{_id}}: </h2>
+</div>
+
+<div class="frame">
+    <div class="ui green compact segment annotate" id="left">
+        <div id="bbox_annotator"></div>
+    </div>
+    <div class="ui red compact segment annotate" id="right">
+        <textarea id="annotation_data" name="annotation" rows="20" cols="50" style="font-family:monospace;" readonly></textarea>
+    </div>
+</div>
+<div class="ui container">
+    <div id="reset" class="ui huge red button">Reset</div>
+    <div id="submit" class="ui huge green button">Submit</div>
+</div>
+
+{{addLocalJS '/js/bbox_annotator.js'}}
+{{addLocalJS '/js/annotate.js'}}
+{{addLocalCSS '/css/annotate/annotate.css'}}
