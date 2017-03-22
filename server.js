@@ -53,7 +53,7 @@ app.set('state namespace', 'App');
 app.expose({}, 'Data');
 
 // Set Port
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 80);
 
 // Setup Logger
 app.use(logger('dev'));
